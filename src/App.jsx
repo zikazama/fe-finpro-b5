@@ -1,10 +1,11 @@
-
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthProvider';
-import Login from './components/Login';
-import Home from './components/Home';
-import { ProtectedRoute, PublicRoute } from './components/Routes';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthProvider";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ResetPassword from "./pages/ResetPassword";
+import { ProtectedRoute, PublicRoute } from "./providers/Routes";
 
 // Main App component with auth context
 const AppContent = () => {
@@ -12,21 +13,37 @@ const AppContent = () => {
     <Router>
       <div className="App">
         <Routes>
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
               <ProtectedRoute>
                 <Home />
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route 
-            path="/login" 
+          <Route
+            path="/login"
             element={
               <PublicRoute>
                 <Login />
               </PublicRoute>
-            } 
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/reset-password"
+            element={
+              <PublicRoute>
+                <ResetPassword />
+              </PublicRoute>
+            }
           />
         </Routes>
       </div>
@@ -42,4 +59,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

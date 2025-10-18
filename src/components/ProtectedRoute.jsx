@@ -1,1 +1,0 @@
-// This file is no longer used. See App.jsx for the new route protection using AuthContext.
